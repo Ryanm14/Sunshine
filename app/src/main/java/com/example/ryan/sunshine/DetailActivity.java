@@ -3,21 +3,23 @@ package com.example.ryan.sunshine;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
-    private ListFragment mListFragment;
+public class DetailActivity extends AppCompatActivity {
+    TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mListFragment = ListFragment.newInstance();
-
-
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.main_activity_frame_layout, mListFragment)
-                .commit();
+        setContentView(R.layout.content_detail);
+        mTextView = (TextView) findViewById(R.id.textView);
+        Intent intent = getIntent();
+        if (intent.hasExtra(Intent.EXTRA_TEXT)) {
+            String forecastStr = intent.getStringExtra(Intent.EXTRA_TEXT);
+            mTextView.setText(forecastStr);
+        }
     }
 
     @Override
@@ -30,5 +32,10 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-}
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        return super.onCreateOptionsMenu(menu);
+    }
+}

@@ -34,7 +34,6 @@ import java.util.ArrayList;
 
 
 public class ListFragment extends Fragment {
-
     private ArrayAdapter<String> mForecastAdapter;
 
     public ListFragment() {
